@@ -27,7 +27,6 @@ Bienvenue dans le dépôt du site **Cefoho**, une plateforme conçue pour connec
 
 ### 3. 🔗 Liens de redirection
 
-- **Ancien lien WhatsApp** : `https://wa.me/17242182477`
 - **Nouveau lien Telegram** : [`https://t.me/cefohoserviceacces`](https://t.me/cefohoserviceacces)
 
 ---
