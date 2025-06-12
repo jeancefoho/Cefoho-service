@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cefoho - Votre passerelle vers l'international</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #0066cc, #004499);
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .flags {
+            font-size: 2rem;
+            display: flex;
+            gap: 15px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #0066cc, #28a745);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: #28a745;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+        }
+
+        .cta-button:hover {
+            background-color: #218838;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(40, 167, 69, 0.4);
+        }
+
+        /* Sections */
+        .section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: #0066cc;
+        }
+
+        .section:nth-child(even) {
+            background-color: white;
+        }
+
+        /* About Section */
+        .about-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+
+        .baron-reference {
+            font-style: italic;
+            color: #28a745;
+            margin-top: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* Advantages */
+        .advantages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .advantage-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .advantage-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .advantage-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        /* Process Steps */
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .step {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+        }
+
+        .step-number {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #0066cc;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Pricing */
+        .pricing-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 400px;
+            margin: 0 auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: 3px solid #28a745;
+        }
+
+        .price {
+            font-size: 4rem;
+            color: #28a745;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        /* Form */
+        .form-container {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #0066cc;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #0066cc, #28a745);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* FAQ */
+        .faq-item {
+            background: white;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .faq-question {
+            background: #f8f9fa;
+            padding: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            border-bottom: 1px solid #eee;
+            transition: background-color 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: #e9ecef;
+        }
+
+        .faq-answer {
+            padding: 20px;
+            display: none;
+        }
+
+        .faq-answer.active {
+            display: block;
+        }
+
+        /* Contact */
+        .contact-info {
+            text-align: center;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            max-width: 500px;
+            margin: 0 auto;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .telegram-button {
+            display: inline-block;
+            background: #0088cc;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .telegram-button:hover {
+            background: #0077b5;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                text-align: center;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .flags {
+                justify-content: center;
+                margin-top: 10px;
+            }
+            
+            .process-steps {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-on-scroll {
+            animation: fadeInUp 0.6s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">Cefoho</div>
+                <div class="flags">🇨🇦 🇺🇸 🇨🇳</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Votre Passerelle vers l'International</h1>
+            <p>Accompagnement personnalisé pour obtenir votre visa, trouver un emploi à l'étranger et lancer votre commerce international</p>
+            <a href="#inscription" class="cta-button">Commencer mon parcours - 5$</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="container">
+            <h2 class="section-title">À Propos de Cefoho</h2>
+            <div class="about-content">
+                <p>Cefoho est un service d'accompagnement dédié aux jeunes africains ambitieux qui souhaitent réaliser leurs rêves à l'international. Nous offrons un soutien personnalisé pour naviguer dans les complexités des démarches administratives et découvrir les opportunités qui vous attendent au Canada, aux États-Unis et en Chine.</p>
+                <p>Notre mission est de démocratiser l'accès aux opportunités internationales en rendant nos services accessibles à tous, peu importe votre situation financière actuelle.</p>
+                <div class="baron-reference">
+                    <em>"Avec le soutien symbolique de Baron Trump, nous croyons en l'avenir prometteur de la jeunesse africaine"</em>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Advantages Section -->
+    <section class="section" id="advantages">
+        <div class="container">
+            <h2 class="section-title">Nos Avantages</h2>
+            <div class="advantages-grid">
+                <div class="advantage-card">
+                    <div class="advantage-icon">🎯</div>
+                    <h3>Accompagnement Personnalisé</h3>
+                    <p>Suivi individuel adapté à votre profil et vos objectifs spécifiques</p>
+                </div>
+                <div class="advantage-card">
+                    <div class="advantage-icon">💰</div>
+                    <h3>Accès Abordable</h3>
+                    <p>Service premium à seulement 5$ pour rendre l'international accessible à tous</p>
+                </div>
+                <div class="advantage-card">
+                    <div class="advantage-icon">🌐</div>
+                    <h3>Réseau d'Opportunités</h3>
+                    <p>Accès à notre réseau étendu d'employeurs et partenaires internationaux</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="section" id="process">
+        <div class="container">
+            <h2 class="section-title">Comment Ça Marche</h2>
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Inscription</h3>
+                    <p>Remplissez notre formulaire et effectuez le paiement de 5$ via Telegram</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Évaluation</h3>
+                    <p>Nous analysons votre profil et définissons ensemble votre stratégie personnalisée</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Accompagnement</h3>
+                    <p>Suivi pas à pas dans vos démarches de visa, recherche d'emploi ou création d'entreprise</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Réussite</h3>
+                    <p>Concrétisation de votre projet avec notre soutien continu</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="section" id="pricing">
+        <div class="container">
+            <h2 class="section-title">Tarif Unique</h2>
+            <div class="pricing-card">
+                <h3>Accompagnement Complet</h3>
+                <div class="price">5<span style="font-size: 2rem;">$</span></div>
+                <p>✅ Évaluation personnalisée</p>
+                <p>✅ Guide étape par étape</p>
+                <p>✅ Soutien via Telegram</p>
+                <p>✅ Accès au réseau d'opportunités</p>
+                <p>✅ Suivi jusqu'à la réussite</p>
+                <a href="#inscription" class="cta-button" style="margin-top: 20px; display: inline-block;">S'inscrire maintenant</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration Form -->
+    <section class="section" id="inscription">
+        <div class="container">
+            <h2 class="section-title">Inscription</h2>
+            <div class="form-container">
+                <form id="registrationForm">
+                    <div class="form-group">
+                        <label for="nom">Nom *</label>
+                        <input type="text" id="nom" name="nom" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="prenom">Prénom *</label>
+                        <input type="text" id="prenom" name="prenom" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="telegram">Nom d'utilisateur Telegram *</label>
+                        <input type="text" id="telegram" name="telegram" placeholder="@votre_nom_utilisateur" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="pays">Pays de résidence *</label>
+                        <select id="pays" name="pays" required>
+                            <option value="">Sélectionnez votre pays</option>
+                            <option value="Algeria">Algérie</option>
+                            <option value="Angola">Angola</option>
+                            <option value="Benin">Bénin</option>
+                            <option value="Botswana">Botswana</option>
+                            <option value="Burkina Faso">Burkina Faso</option>
+                            <option value="Burundi">Burundi</option>
+                            <option value="Cameroon">Cameroun</option>
+                            <option value="Cape Verde">Cap-Vert</option>
+                            <option value="Central African Republic">République Centrafricaine</option>
+                            <option value="Chad">Tchad</option>
+                            <option value="Comoros">Comores</option>
+                            <option value="Congo">Congo</option>
+                            <option value="Democratic Republic of Congo">République Démocratique du Congo</option>
+                            <option value="Djibouti">Djibouti</option>
+                            <option value="Egypt">Égypte</option>
+                            <option value="Equatorial Guinea">Guinée Équatoriale</option>
+                            <option value="Eritrea">Érythrée</option>
+                            <option value="Eswatini">Eswatini</option>
+                            <option value="Ethiopia">Éthiopie</option>
+                            <option value="Gabon">Gabon</option>
+                            <option value="Gambia">Gambie</option>
+                            <option value="Ghana">Ghana</option>
+                            <option value="Guinea">Guinée</option>
+                            <option value="Guinea-Bissau">Guinée-Bissau</option>
+                            <option value="Ivory Coast">Côte d'Ivoire</option>
+                            <option value="Kenya">Kenya</option>
+                            <option value="Lesotho">Lesotho</option>
+                            <option value="Liberia">Libéria</option>
+                            <option value="Libya">Libye</option>
+                            <option value="Madagascar">Madagascar</option>
+                            <option value="Malawi">Malawi</option>
+                            <option value="Mali">Mali</option>
+                            <option value="Mauritania">Mauritanie</option>
+                            <option value="Mauritius">Maurice</option>
+                            <option value="Morocco">Maroc</option>
+                            <option value="Mozambique">Mozambique</option>
+                            <option value="Namibia">Namibie</option>
+                            <option value="Niger">Niger</option>
+                            <option value="Nigeria">Nigeria</option>
+                            <option value="Rwanda">Rwanda</option>
+                            <option value="Sao Tome and Principe">São Tomé-et-Principe</option>
+                            <option value="Senegal">Sénégal</option>
+                            <option value="Seychelles">Seychelles</option>
+                            <option value="Sierra Leone">Sierra Leone</option>
+                            <option value="Somalia">Somalie</option>
+                            <option value="South Africa">Afrique du Sud</option>
+                            <option value="South Sudan">Soudan du Sud</option>
+                            <option value="Sudan">Soudan</option>
+                            <option value="Tanzania">Tanzanie</option>
+                            <option value="Togo">Togo</option>
+                            <option value="Tunisia">Tunisie</option>
+                            <option value="Uganda">Ouganda</option>
+                            <option value="Zambia">Zambie</option>
+                            <option value="Zimbabwe">Zimbabwe</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="parrain">Code Parrain (optionnel)</label>
+                        <input type="text" id="parrain" name="parrain" placeholder="Si vous avez été référé">
+                    </div>
+                    <button type="submit" class="submit-btn">S'inscrire et continuer sur Telegram</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section" id="faq">
+        <div class="container">
+            <h2 class="section-title">Questions Fréquentes</h2>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    Comment fonctionne le paiement de 5$ ?
+                </div>
+                <div class="faq-answer">
+                    Après votre inscription, vous serez automatiquement redirigé vers notre canal Telegram où nous vous expliquerons les modalités de paiement simples et sécurisées.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    Quels pays sont couverts par vos services ?
+                </div>
+                <div class="faq-answer">
+                    Nous nous spécialisons dans l'accompagnement pour le Canada 🇨🇦, les États-Unis 🇺🇸 et la Chine 🇨🇳, trois destinations offrant d'excellentes opportunités.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    Combien de temps dure l'accompagnement ?
+                </div>
+                <div class="faq-answer">
+                    Notre accompagnement se poursuit jusqu'à la réalisation de votre objectif. La durée varie selon votre projet, mais nous restons à vos côtés tout au long du processus.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    Puis-je être remboursé si je ne suis pas satisfait ?
+                </div>
+                <div class="faq-answer">
+                    Nous nous engageons à vous fournir un service de qualité. Contactez-nous via Telegram pour discuter de toute préoccupation que vous pourriez avoir.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    Dois-je avoir un niveau d'éducation spécifique ?
+                </div>
+                <div class="faq-answer">
+                    Non, nos services s'adaptent à tous les profils. Nous évaluons votre situation individuelle et créons une stratégie personnalisée selon vos compétences et aspirations.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    Le service fonctionne-t-il vraiment pour seulement 5$ ?
+                </div>
+                <div class="faq-answer">
+                    Oui ! Nous croyons que l'accès aux opportunités internationales ne doit pas être un privilège. Les 5$ couvrent votre inscription et l'accès à notre accompagnement complet.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+        <div class="container">
+            <h2 class="section-title">Contact</h2>
+            <div class="contact-info">
+                <h3>Besoin d'aide ? Contactez-nous directement</h3>
+                <p>Notre équipe est disponible sur Telegram pour répondre à toutes vos questions</p>
+                <a href="https://t.me/cefohoserviceacces" class="telegram-button" target="_blank">
+                    📱 Contacter sur Telegram
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Cefoho. Votre partenaire pour réussir à l'international.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Store registrations in memory
+        let registrations = [];
+
+        // FAQ Toggle
+        function toggleFaq(element) {
+            const answer = element.nextElementSibling;
+            const isActive = answer.classList.contains('active');
+            
+            // Close all FAQ answers
+            document.querySelectorAll('.faq-answer').forEach(faq => {
+                faq.classList.remove('active');
+            });
+            
+            // Open clicked FAQ if it wasn't already active
+            if (!isActive) {
+                answer.classList.add('active');
+            }
+        }
+
+        // Form submission
+        document.getElementById('registrationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const registration = {
+                nom: formData.get('nom'),
+                prenom: formData.get('prenom'),
+                email: formData.get('email'),
+                telegram: formData.get('telegram'),
+                pays: formData.get('pays'),
+                parrain: formData.get('parrain') || 'Aucun',
+                dateInscription: new Date().toLocaleDateString('fr-FR')
+            };
+            
+            // Store registration
+            registrations.push(registration);
+            
+            // Create Telegram message
+            const message = `Bonjour Cefoho! 👋
+
+Je viens de m'inscrire sur votre site web avec les informations suivantes:
+
+📝 *Mes informations:*
+• Nom: ${registration.nom}
+• Prénom: ${registration.prenom}
+• Email: ${registration.email}
+• Telegram: ${registration.telegram}
+• Pays: ${registration.pays}
+• Parrain: ${registration.parrain}
+
+Je souhaite commencer mon accompagnement pour obtenir un visa et explorer les opportunités à l'international. 
+
+Pouvez-vous me guider pour le paiement de 5$ et les prochaines étapes? 
+
+Merci! 🌍✈️`;
+            
+            // Redirect to Telegram
+            const telegramUrl = `https://t.me/cefohoserviceacces?text=${encodeURIComponent(message)}`;
+            window.open(telegramUrl, '_blank');
+            
+            // Show success message
+            alert('Inscription réussie! Vous allez être redirigé vers Telegram pour finaliser votre inscription.');
+            
+            // Reset form
+            this.reset();
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Animation on scroll
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.advantage-card, .step, .pricing-card');
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('animate-on-scroll');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', animateOnScroll);
+        animateOnScroll(); // Run once on load
+
+        // Console log for debugging registrations
+        console.log('Cefoho loaded successfully!');
+        console.log('Registrations will be stored in memory during session');
+    </script>
+</body>
+</html>
